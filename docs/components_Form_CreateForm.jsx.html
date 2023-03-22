@@ -1,4 +1,32 @@
-/* react */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Form/CreateForm.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Form/CreateForm.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* react */
 import React from "react"
 import { useState } from "react"
 /*  react datepicker  */
@@ -48,16 +76,16 @@ export default function CreateForm() {
     const dispatch = useDispatch()
 
     // your modal style 
-    // const modal_styles = {
-    //   "backgroundColor": "rgb(187 245 193)",   
-    //   "borderRadius": 10,
-    //   "boxShadow": "rgb(5 60 9) 0px 0px 0px 2px",
-    //   "color": "rgb(5 72 4)",
-    //   "fontSize": 18,
-    //   "height": "fit-content",
-    //   "padding": "20px 50px",
-    //   "width": "fit-content"
-    // }
+    const modal_styles = {
+      "backgroundColor": "rgb(187 245 193)",   
+      "borderRadius": 10,
+      "boxShadow": "rgb(5 60 9) 0px 0px 0px 2px",
+      "color": "rgb(5 72 4)",
+      "fontSize": 18,
+      "height": "fit-content",
+      "padding": "20px 50px",
+      "width": "fit-content"
+    }
 
     /**
      * @function selectDateBirthHandler
@@ -159,16 +187,16 @@ export default function CreateForm() {
 
 
   return (
-    <div>
-        <form onSubmit={handleSubmit} id="createForm" >
+    &lt;div>
+        &lt;form onSubmit={handleSubmit} id="createForm" >
 
-           <div className={styles.createForm}>
+           &lt;div className={styles.createForm}>
 
-                <div className={styles.informationsContainer}>
-                    <div className={styles.informationsContainer__firstName}>
-                        <label htmlFor="firstName">First name</label>
-                        <p>
-                            <input className={styles.input}
+                &lt;div className={styles.informationsContainer}>
+                    &lt;div className={styles.informationsContainer__firstName}>
+                        &lt;label htmlFor="firstName">First name&lt;/label>
+                        &lt;p>
+                            &lt;input className={styles.input}
                                 autoComplete="off"
                                 id="firstName"
                                 name="firstName"
@@ -180,12 +208,12 @@ export default function CreateForm() {
                                 // pattern="[A-zÀ-ú-']{2,}"
                                 // title="At least 2 alphabetic characters"
                             />
-                        </p>                    
-                    </div>
-                    <div className={styles.informationsContainer__lastName}>
-                        <label htmlFor="lastName">Last name</label>
-                        <p>
-                            <input autoComplete="off"
+                        &lt;/p>                    
+                    &lt;/div>
+                    &lt;div className={styles.informationsContainer__lastName}>
+                        &lt;label htmlFor="lastName">Last name&lt;/label>
+                        &lt;p>
+                            &lt;input autoComplete="off"
                                 id="lastName"
                                 name="lastName"
                                 aria-label="lastName"
@@ -196,38 +224,38 @@ export default function CreateForm() {
                                 // pattern="[A-zÀ-ú-']{2,}"
                                 // title="At least 2 alphabetic characters"
                             />
-                        </p>                    
-                    </div>
-                    <div className={styles.informationsContainer__firstName}>
-                        <label htmlFor="dateBirth">Date of Birth</label>                
-                        <div>
-                            <DatePicker
+                        &lt;/p>                    
+                    &lt;/div>
+                    &lt;div className={styles.informationsContainer__firstName}>
+                        &lt;label htmlFor="dateBirth">Date of Birth&lt;/label>                
+                        &lt;div>
+                            &lt;DatePicker
                                 dateFormat="MM/dd/yyyy"
                                 placeholderText="mm/dd/yyyy"
                                 selected={dateOfBirth} 
                                 onChange={selectDateBirthHandler} 
                             />
-                        </div>                 
-                    </div>
-                    <div className={styles.informationsContainer__lastName}>
-                        <label htmlFor="startDate">Start Date</label>
-                        <div>
-                            <DatePicker
+                        &lt;/div>                 
+                    &lt;/div>
+                    &lt;div className={styles.informationsContainer__lastName}>
+                        &lt;label htmlFor="startDate">Start Date&lt;/label>
+                        &lt;div>
+                            &lt;DatePicker
                                 dateFormat="MM/dd/yyyy"
                                 placeholderText="mm/dd/yyyy"
                                 selected={startDate} 
                                 onChange={selectDateStartHandler} 
                             />
-                        </div>                                      
-                    </div>
-                </div>
+                        &lt;/div>                                      
+                    &lt;/div>
+                &lt;/div>
 
-                <fieldset className={styles.adressContainer}>
-                    <legend>Address</legend>
-                    <div className={styles.informationsContainer__firstName}>
-                        <label htmlFor="street">Street</label>
-                            <p>
-                                <input autoComplete="off"
+                &lt;fieldset className={styles.adressContainer}>
+                    &lt;legend>Address&lt;/legend>
+                    &lt;div className={styles.informationsContainer__firstName}>
+                        &lt;label htmlFor="street">Street&lt;/label>
+                            &lt;p>
+                                &lt;input autoComplete="off"
                                     id="street"
                                     name="street"
                                     aria-label="street"
@@ -235,12 +263,12 @@ export default function CreateForm() {
                                     placeholder="street" 
                                     type="text" 
                                 />
-                            </p>                    
-                        </div>
-                        <div className={styles.informationsContainer__lastName}>
-                        <label htmlFor="city">City</label>
-                            <p>
-                                <input autoComplete="off"
+                            &lt;/p>                    
+                        &lt;/div>
+                        &lt;div className={styles.informationsContainer__lastName}>
+                        &lt;label htmlFor="city">City&lt;/label>
+                            &lt;p>
+                                &lt;input autoComplete="off"
                                     id="city"
                                     name="city"
                                     aria-label="street"
@@ -248,11 +276,11 @@ export default function CreateForm() {
                                     placeholder="city" 
                                     type="text" 
                                 />
-                            </p>                    
-                        </div>
-                        <div className={styles.informationsContainer__select}>
-                            <label htmlFor="states">State</label>
-                            <Select 
+                            &lt;/p>                    
+                        &lt;/div>
+                        &lt;div className={styles.informationsContainer__select}>
+                            &lt;label htmlFor="states">State&lt;/label>
+                            &lt;Select 
                                 value={selectedState}
                                 defaultValue={selectedState}
                                 onChange={setSelectedState}
@@ -262,11 +290,11 @@ export default function CreateForm() {
                                 aria-label="state"
                                 className={styles.select}
                             />                 
-                        </div>
-                        <div className={styles.informationsContainer__lastName}>
-                        <label htmlFor="zipCode">Zip Code</label>
-                        <p>
-                            <input autoComplete="off"
+                        &lt;/div>
+                        &lt;div className={styles.informationsContainer__lastName}>
+                        &lt;label htmlFor="zipCode">Zip Code&lt;/label>
+                        &lt;p>
+                            &lt;input autoComplete="off"
                             type="number"
                             id="zipCode"
                             name="ZipCode"
@@ -274,14 +302,14 @@ export default function CreateForm() {
                             placeholder="zip code"
                             onChange={(e) => setZipCode(e.target.value)}
                             />
-                        </p>                    
-                    </div>
-                </fieldset>
+                        &lt;/p>                    
+                    &lt;/div>
+                &lt;/fieldset>
 
-                <div className={styles.departmentContainer}>
-                    <div className={styles.informationsContainer__select}>
-                        <label htmlFor="department">Department</label>
-                        <Select 
+                &lt;div className={styles.departmentContainer}>
+                    &lt;div className={styles.informationsContainer__select}>
+                        &lt;label htmlFor="department">Department&lt;/label>
+                        &lt;Select 
                             value={selectedDepartment}
                             defaultValue={selectedDepartment}
                             onChange={setSelectedDepartment}
@@ -291,24 +319,47 @@ export default function CreateForm() {
                             aria-label="department"
                             className={styles.select}
                         />                     
-                    </div>                    
-                </div>               
-            </div> 
+                    &lt;/div>                    
+                &lt;/div>               
+            &lt;/div> 
 
-            <div className={styles.btnContainer}>
-                <button id="submit"  type="submit">Save</button>
-            </div>      
+            &lt;div className={styles.btnContainer}>
+                &lt;button id="submit"  type="submit">Save&lt;/button>
+            &lt;/div>      
 
-            <div className={styles.ModalContainer}>
-                <Modal 
+            &lt;div className={styles.ModalContainer}>
+                &lt;Modal 
                 id="modalEmployeeCreated"
                 showModal={showModal}
                 closeModal={() => setShowModal(false)}
-                // modal_styles={modal_styles}  //add if your modal style 
+                modal_styles={modal_styles}
                 message="Employee Created !"
                 />
-            </div>
-        </form>
-    </div>
+            &lt;/div>
+        &lt;/form>
+    &lt;/div>
    )
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CreateEmployeePage">CreateEmployeePage</a></li><li><a href="global.html#CreateForm">CreateForm</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#GlobalFilter">GlobalFilter</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#ListEmployeePage">ListEmployeePage</a></li><li><a href="global.html#Table">Table</a></li><li><a href="global.html#employeeSlice">employeeSlice</a></li><li><a href="global.html#handleSubmit">handleSubmit</a></li><li><a href="global.html#persistConfig">persistConfig</a></li><li><a href="global.html#persistedReducer">persistedReducer</a></li><li><a href="global.html#selectDateBirthHandler">selectDateBirthHandler</a></li><li><a href="global.html#selectDateStartHandler">selectDateStartHandler</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 22 2023 08:32:33 GMT+0400 (heure normale de Maurice)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

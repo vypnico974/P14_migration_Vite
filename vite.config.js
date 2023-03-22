@@ -14,14 +14,14 @@ import { dependencies } from './package.json';
 const reactDeps = Object.keys(dependencies).filter(key => key === 'react' || key.startsWith('react-'))
 
 const manualChunks = {
-          vendor: reactDeps,
-          ...Object.keys(dependencies).reduce((chunks, name) => {
-            if (!reactDeps.includes(name)) {
-              chunks[name] = [name]
-            }
-            return chunks
-          }, {}),
-        }
+  vendor: reactDeps,
+    ...Object.keys(dependencies).reduce((chunks, name) => {
+      if (!reactDeps.includes(name)) {
+        chunks[name] = [name]
+      }
+      return chunks
+  },{}),
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -31,7 +31,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-router-dom', 'react-dom'],
+          vendor: ['react', 'react-router-dom', 'react-dom','react-datepicker',
+          'react-redux','react-select'],
           // ...renderChunks(dependencies),
         },
       },

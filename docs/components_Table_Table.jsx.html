@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Table/Table.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Table/Table.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react"
+// react table
+import { useTable, useGlobalFilter, useSortBy, usePagination   } from 'react-table' 
+// GlobalFilter for table
+import GlobalFilter from "./GlobalFilter"
+// prop types
+import PropTypes from 'prop-types'
+/* css */
+import styles from './table.module.css'
+
+
+/**
+  * @function Table
+  * @export
+  * @description  component : header 
+  * @param {array} columns - columns for table
+  * @param {object} data - data for table
+  * @return {HTMLElement} table component generated HTML
+*/
+export default function Table({ columns, data }) {
+  
+     // Use the state and functions returned from useTable to build your UI
+     const {
+      getTableProps,
+      getTableBodyProps,
+      headerGroups,
+      prepareRow,
+  
+      //new
+      page, // Instead of using 'rows', we'll use page,
+      // which has only the rows for the active page
+  
+      // The rest of these things are super handy, too ;)
+      canPreviousPage,
+      canNextPage,
+      pageOptions,
+      pageCount,
+      gotoPage,
+      nextPage,
+      previousPage,
+      setPageSize,
+  
+      state,
+      preGlobalFilteredRows,
+      setGlobalFilter,
+    } = useTable({
+        columns,
+        initialState: { pageIndex: 0 },
+      data,
+    },
+      useGlobalFilter,
+      useSortBy,
+      usePagination,  // new
+    )
+
+    const { pageIndex } = state
+
+  // Render the UI for your table
+  return (
+  &lt;>
+
+    &lt;div className={styles.containerFilter}>
+
+         {/* input filter */}
+    &lt;GlobalFilter
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        globalFilter={state.globalFilter}
+        setGlobalFilter={setGlobalFilter}
+      />
+
+     
+
+      {/* show items   */}
+      &lt;div className={styles.containerShow}>
+        &lt;p className={styles.pShow}>Show &lt;/p>
+        &lt;select id="show"
+            value={state.pageSize}
+            onChange={e => {
+                setPageSize(Number(e.target.value))
+            }}
+          >
+            {[10, 25, 50, 100].map(pageSize => (
+                &lt;option key={pageSize} value={pageSize}>
+                {pageSize}
+              &lt;/option>
+            ))}
+        &lt;/select> 
+        &lt;p className={styles.pShow}>entries &lt;/p>     
+      &lt;/div>
+      
+
+
+    &lt;/div>
+
+   
+    &lt;table {...getTableProps()} border="1">
+    &lt;thead>
+          {headerGroups.map(headerGroup => (
+            &lt;tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                // Add the sorting props to control sorting. For this example
+                // we can add them into the header props
+                &lt;th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  {/* Add a sort direction indicator */}
+                  &lt;span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' ▼'
+                        : ' ▲'
+                      : ''}
+                  &lt;/span>
+                &lt;/th>
+              ))}
+            &lt;/tr>
+          ))}
+        &lt;/thead>
+      &lt;tbody {...getTableBodyProps()}>
+      {page.map((row, i) => {  // replace row with page
+          prepareRow(row);
+          return (
+            &lt;tr {...row.getRowProps()}>
+              {row.cells.map((cell) => {
+                return &lt;td {...cell.getCellProps()}>{cell.render("Cell")}&lt;/td>;
+              })}
+            &lt;/tr>
+          );
+        })}
+      &lt;/tbody>
+    &lt;/table>
+     {/* pagination */}
+     &lt;div className={styles.containerFilter}>
+      &lt;div className="pagination">
+          &lt;button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+            {'&lt;&lt;'}
+          &lt;/button>{' '}
+          &lt;button onClick={() => previousPage()} disabled={!canPreviousPage}>
+            {'&lt;'}
+          &lt;/button>{' '}
+          &lt;button onClick={() => nextPage()} disabled={!canNextPage}>
+            {'>'}
+          &lt;/button>{' '}
+          &lt;button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+            {'>>'}
+          &lt;/button>{' '}
+          &lt;span className={styles.showing}>
+            Showing{' '}
+            &lt;strong>
+              {state.pageIndex + 1} 
+            &lt;/strong>
+            {'  '} to   {pageOptions.length} {'  '} page
+            {'  '} of {'  '}  {preGlobalFilteredRows.length} entries
+          &lt;/span>
+        &lt;/div>
+
+        &lt;span className={styles.containerGoTo}>
+              &lt;label htmlFor="goto">Go to page: &lt;/label>
+              &lt;input
+                id="goto"
+                type="number"
+                min="1"
+                defaultValue={pageIndex + 1}
+                onChange={(e) => {
+                  const pageNumber = e.target.value
+                    ? Number(e.target.value) - 1
+                    : 0;
+                  gotoPage(pageNumber);
+                }}
+                style={{ width: "50px" }}
+              />
+        &lt;/span>
+      &lt;/div>   
+    &lt;/>  
+  )
+}
+Table.prototype = {
+  columns: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#CreateEmployeePage">CreateEmployeePage</a></li><li><a href="global.html#CreateForm">CreateForm</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#GlobalFilter">GlobalFilter</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#ListEmployeePage">ListEmployeePage</a></li><li><a href="global.html#Table">Table</a></li><li><a href="global.html#employeeSlice">employeeSlice</a></li><li><a href="global.html#handleSubmit">handleSubmit</a></li><li><a href="global.html#persistConfig">persistConfig</a></li><li><a href="global.html#persistedReducer">persistedReducer</a></li><li><a href="global.html#selectDateBirthHandler">selectDateBirthHandler</a></li><li><a href="global.html#selectDateStartHandler">selectDateStartHandler</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Mar 22 2023 08:32:33 GMT+0400 (heure normale de Maurice)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

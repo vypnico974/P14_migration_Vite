@@ -18,6 +18,7 @@ import logoHeader from "./assets/Wealth_Health_logo.webp"
 const Header = lazy(() => import("./components/Header/Header"))
 
 
+
 const arrayNav = [{ linkNav: "/", titleNav: "Create Employee" },
                   { linkNav: "/list", titleNav: "View Current Employees" }]
 
@@ -36,10 +37,10 @@ export default function App() {
         {/* header  example formatting = "smallHeader"*/}   
         <Header picture={logoHeader} linkPicture="/" arrayNav={arrayNav} 
         formatting="header" /> 
-       </Suspense>
+      </Suspense>
         <Routes> 
           <Route exact path="/" element={<CreateEmployeePage />}/>
-          <Route exact path="/P14_OpenClassrooms_WealthHealth/" element={<CreateEmployeePage />}/>
+          <Route exact path="/P14_OpenClassrooms_WealthHealth_Vite/" element={<CreateEmployeePage />}/>
           <Route exact path="/list" element={<ListEmployeePage />}/>
             {/* Error Route */}
           <Route path="*" element={<Error />}/>
