@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://vypnico974.github.io/P14_OpenClassrooms_WealthHealth_Vite/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -22,7 +21,7 @@
     "react": "^18.2.0",
     "react-datepicker": "^4.10.0",
     "react-dom": "^18.2.0",
-    "react-modal-by-vyplasiln": "^1.0.9",
+    "react-modal-by-vyplasiln": "^1.0.10",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-select": "^5.7.0",
