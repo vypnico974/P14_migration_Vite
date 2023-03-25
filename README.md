@@ -108,8 +108,8 @@ de fichier des dépendances React pour permettre l'amélioration de la performan
     - with npm : npm i (or npm install)
     - with yarn : yarn (or yarn install)
 - Run the FrontEnd :  
-    - with npm : npm dev
-    - with yarn : yarn dev
+    - with npm : npm run dev
+    - with yarn : yarn run dev
 - To create and run a production build : 
    - with npm : 
      - npm run build
